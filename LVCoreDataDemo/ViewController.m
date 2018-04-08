@@ -32,9 +32,17 @@
     [self updateData];
     [self queryData];
     [self sortData];
+    [self fetchRequest];
 }
 
-#pragma mark - Private - Database upgrade and data migration
+#pragma mark - Private - Fetch Requests
+
+- (void)fetchRequest {
+    NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"]];
+    NSFetchRequest *studentFR = [model fetchRequestTemplateForName:@"StudentFR"];
+    NSArray *rtArray = [_context executeFetchRequest:studentFR error:nil];
+    NSLog(@"result:\n%@",rtArray);
+}
 
 #pragma mark - Private - Database upgrade and data migration light weight
 //使用于数据库增加新表、新增实体属性，等简单的，系统能推断出来的迁移方式
@@ -74,19 +82,19 @@
 
 //1.需要手动生成上下文、关联数据库
 - (void)createSqlite {
-    //    NSManagedObjectContext *context; ///< 管理对象、上下文、持久化存储模型对象、处理数据和应用的交互
-    //    NSManagedObjectModel *model; ///< 被管理的数据模型、数据结构
+    //    NSManagedObjectContext *context; ///< 托管对象上下文，进行数据操作
+    //    NSManagedObjectModel *model; ///< 被管理的数据模型，关联一个(.xcdatamodeld)，存储着数据结构
     //    NSPersistentStoreCoordinator *coordinator; ///< 添加数据库，设置数据的名字、位置、存储方式
     //    NSFetchRequest *request; ///< 数据请求
+    //    NSManagedObject * object; ///< 托管对象类，所有CoreData中的托管对象都必须是这个子类
     //    NSEntityDescription *description; ///< 表格实体结构
     
     //1.创建模型对象
-    //获取模型路径
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
     //根据模型文件创建模型对象
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
     NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     
-    //2.创建持久化存储协调器:数据库
+    //2.持久化存储协调器，负责协调存储区和上下文之间的关系
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
     //数据库名称、位置
     NSString *docStr = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -95,7 +103,6 @@
     //添加数据库
     NSError *error = nil;
     [coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:sqlURL options:nil error:&error];
-    
     if (error) {
         NSLog(@"Add Database failed! %@",error);
     }else {
@@ -211,19 +218,3 @@
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

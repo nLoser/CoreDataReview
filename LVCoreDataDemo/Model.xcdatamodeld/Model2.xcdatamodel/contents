@@ -13,13 +13,19 @@
         <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="teacher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teacher" inverseName="student" inverseEntity="Teacher" syncable="YES"/>
     </entity>
     <entity name="Teacher" representedClassName="Teacher" syncable="YES">
         <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="teacher" inverseEntity="Student" syncable="YES"/>
+        <fetchedProperty name="fetchedProperty" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Teacher" predicateString="$FETCH_SOURCE.sex == 10"/>
+        </fetchedProperty>
     </entity>
+    <fetchRequest name="StudentFR" entity="Student" predicateString="age &gt; 10"/>
     <elements>
-        <element name="Student" positionX="-63" positionY="-18" width="128" height="135"/>
-        <element name="Teacher" positionX="-54" positionY="27" width="128" height="60"/>
         <element name="President" positionX="-54" positionY="27" width="128" height="105"/>
+        <element name="Student" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Teacher" positionX="-54" positionY="27" width="128" height="104"/>
     </elements>
 </model>
