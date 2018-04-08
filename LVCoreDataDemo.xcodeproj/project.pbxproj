@@ -15,6 +15,11 @@
 		B153669E2079BC0200866FF3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B153669D2079BC0200866FF3 /* main.m */; };
 		B15366A82079BC0200866FF3 /* LVCoreDataDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B15366A72079BC0200866FF3 /* LVCoreDataDemoTests.m */; };
 		B15366B32079BC0200866FF3 /* LVCoreDataDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B15366B22079BC0200866FF3 /* LVCoreDataDemoUITests.m */; };
+		B15366C52079BD1000866FF3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B15366C32079BD1000866FF3 /* Model.xcdatamodeld */; };
+		B15366CF2079C72B00866FF3 /* Teacher+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B15366C92079C72B00866FF3 /* Teacher+CoreDataClass.m */; };
+		B15366D02079C72B00866FF3 /* Teacher+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B15366CA2079C72B00866FF3 /* Teacher+CoreDataProperties.m */; };
+		B15366D12079C72B00866FF3 /* Student+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B15366CD2079C72B00866FF3 /* Student+CoreDataClass.m */; };
+		B15366D22079C72B00866FF3 /* Student+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B15366CE2079C72B00866FF3 /* Student+CoreDataProperties.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,15 @@
 		B15366AE2079BC0200866FF3 /* LVCoreDataDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LVCoreDataDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B15366B22079BC0200866FF3 /* LVCoreDataDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LVCoreDataDemoUITests.m; sourceTree = "<group>"; };
 		B15366B42079BC0200866FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B15366C42079BD1000866FF3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B15366C72079C72B00866FF3 /* Teacher+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teacher+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B15366C82079C72B00866FF3 /* Teacher+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teacher+CoreDataClass.h"; sourceTree = "<group>"; };
+		B15366C92079C72B00866FF3 /* Teacher+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Teacher+CoreDataClass.m"; sourceTree = "<group>"; };
+		B15366CA2079C72B00866FF3 /* Teacher+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Teacher+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B15366CB2079C72B00866FF3 /* Student+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Student+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B15366CC2079C72B00866FF3 /* Student+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Student+CoreDataClass.h"; sourceTree = "<group>"; };
+		B15366CD2079C72B00866FF3 /* Student+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Student+CoreDataClass.m"; sourceTree = "<group>"; };
+		B15366CE2079C72B00866FF3 /* Student+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Student+CoreDataProperties.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +115,7 @@
 		B153668D2079BC0000866FF3 /* LVCoreDataDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B15366C62079C70100866FF3 /* MTManagerModel */,
 				B153668E2079BC0000866FF3 /* AppDelegate.h */,
 				B153668F2079BC0100866FF3 /* AppDelegate.m */,
 				B15366912079BC0100866FF3 /* ViewController.h */,
@@ -110,6 +125,7 @@
 				B15366992079BC0200866FF3 /* LaunchScreen.storyboard */,
 				B153669C2079BC0200866FF3 /* Info.plist */,
 				B153669D2079BC0200866FF3 /* main.m */,
+				B15366C32079BD1000866FF3 /* Model.xcdatamodeld */,
 			);
 			path = LVCoreDataDemo;
 			sourceTree = "<group>";
@@ -130,6 +146,21 @@
 				B15366B42079BC0200866FF3 /* Info.plist */,
 			);
 			path = LVCoreDataDemoUITests;
+			sourceTree = "<group>";
+		};
+		B15366C62079C70100866FF3 /* MTManagerModel */ = {
+			isa = PBXGroup;
+			children = (
+				B15366C72079C72B00866FF3 /* Teacher+CoreDataProperties.h */,
+				B15366CA2079C72B00866FF3 /* Teacher+CoreDataProperties.m */,
+				B15366C82079C72B00866FF3 /* Teacher+CoreDataClass.h */,
+				B15366C92079C72B00866FF3 /* Teacher+CoreDataClass.m */,
+				B15366CB2079C72B00866FF3 /* Student+CoreDataProperties.h */,
+				B15366CE2079C72B00866FF3 /* Student+CoreDataProperties.m */,
+				B15366CC2079C72B00866FF3 /* Student+CoreDataClass.h */,
+				B15366CD2079C72B00866FF3 /* Student+CoreDataClass.m */,
+			);
+			path = MTManagerModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +293,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B15366D12079C72B00866FF3 /* Student+CoreDataClass.m in Sources */,
+				B15366D22079C72B00866FF3 /* Student+CoreDataProperties.m in Sources */,
 				B15366932079BC0100866FF3 /* ViewController.m in Sources */,
 				B153669E2079BC0200866FF3 /* main.m in Sources */,
+				B15366D02079C72B00866FF3 /* Teacher+CoreDataProperties.m in Sources */,
 				B15366902079BC0100866FF3 /* AppDelegate.m in Sources */,
+				B15366C52079BD1000866FF3 /* Model.xcdatamodeld in Sources */,
+				B15366CF2079C72B00866FF3 /* Teacher+CoreDataClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +472,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4654Y4Z9R;
 				INFOPLIST_FILE = LVCoreDataDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,6 +490,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T4654Y4Z9R;
 				INFOPLIST_FILE = LVCoreDataDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -577,6 +615,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B15366C32079BD1000866FF3 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B15366C42079BD1000866FF3 /* Model.xcdatamodel */,
+			);
+			currentVersion = B15366C42079BD1000866FF3 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B15366832079BC0000866FF3 /* Project object */;
 }
