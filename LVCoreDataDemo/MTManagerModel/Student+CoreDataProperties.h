@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *name;
 @property (nonatomic) int16_t number;
 @property (nullable, nonatomic, copy) NSString *sex;
+@property (nonatomic) int16_t weight;
 
 @end
 

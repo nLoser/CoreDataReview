@@ -20,5 +20,6 @@
 @dynamic name;
 @dynamic number;
 @dynamic sex;
+@dynamic weight;
 
 @end

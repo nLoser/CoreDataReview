@@ -19,7 +19,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self createSqlite];
+    //NOTE:Version 1.0版本数据库初始化
+    //[self createSqlite];
+    
+    //NOTE:Version 2.0版本数据库升级
+    [self upgradeDatabase];
+    
     for (int i = 0; i < 10; i ++) {
         [self insertToStudentTable:@(i)];
     }
@@ -29,7 +34,80 @@
     [self sortData];
 }
 
-#pragma mark - Private
+#pragma mark - Private - Database upgrade and data migration
+
+#pragma mark - Private - Database upgrade and data migration light weight
+//使用于数据库增加新表、新增实体属性，等简单的，系统能推断出来的迁移方式
+//1.首先给予原有的model。xcdataModel取名一个新的版本xcdataModel
+//2.xcode中点击Model.xcdatamodel选中，在右侧的Model Version选中Current模板为Model2
+//3.操作：新增表、新增实体属性（并且一定要删除原来旧的类文件，然后重新生成新的实体类文件）
+//4.设置数据库参数options，打开数据库升级迁移开关
+
+- (void)upgradeDatabase {
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
+    NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+    
+    //请求自动化轻量数据库升级，数据迁移
+    NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption:@(YES),
+                              NSInferMappingModelAutomaticallyOption:@(YES)};
+    
+    NSString *docStr = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *sqlPath = [docStr stringByAppendingPathComponent:@"coreData.sqlite"];
+    NSURL *sqlURL = [NSURL fileURLWithPath:sqlPath];
+    
+    NSError *error = nil;
+    [coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:sqlURL options:options error:&error];
+    
+    if (error) {
+        NSLog(@"Database upgrade and data migration failed! %@",error);
+    }else {
+        NSLog(@"Database upgrade and data migration success.");
+    }
+    
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    context.persistentStoreCoordinator = coordinator;
+    _context = context;
+}
+
+#pragma mark - Private - Base CoreData Operation
+
+//1.需要手动生成上下文、关联数据库
+- (void)createSqlite {
+    //    NSManagedObjectContext *context; ///< 管理对象、上下文、持久化存储模型对象、处理数据和应用的交互
+    //    NSManagedObjectModel *model; ///< 被管理的数据模型、数据结构
+    //    NSPersistentStoreCoordinator *coordinator; ///< 添加数据库，设置数据的名字、位置、存储方式
+    //    NSFetchRequest *request; ///< 数据请求
+    //    NSEntityDescription *description; ///< 表格实体结构
+    
+    //1.创建模型对象
+    //获取模型路径
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
+    //根据模型文件创建模型对象
+    NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    
+    //2.创建持久化存储协调器:数据库
+    NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+    //数据库名称、位置
+    NSString *docStr = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *sqlpath = [docStr stringByAppendingPathComponent:@"coreData.sqlite"];
+    NSURL *sqlURL = [NSURL fileURLWithPath:sqlpath];
+    //添加数据库
+    NSError *error = nil;
+    [coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:sqlURL options:nil error:&error];
+    
+    if (error) {
+        NSLog(@"Add Database failed! %@",error);
+    }else {
+        NSLog(@"Add Database success.");
+    }
+    
+    //3.管理对象、上下文、持久化存储模型对象、处理数据和应用的交互
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    //关联持久化协调器
+    context.persistentStoreCoordinator = coordinator;
+    _context = context;
+}
 
 //排序
 - (void)sortData {
@@ -131,47 +209,6 @@
         NSLog(@"Insert new Student datas failed! %@",error);
     }
 }
-
-
-
-//1.需要手动生成上下文、关联数据库
-- (void)createSqlite {
-//    NSManagedObjectContext *context; ///< 管理对象、上下文、持久化存储模型对象、处理数据和应用的交互
-//    NSManagedObjectModel *model; ///< 被管理的数据模型、数据结构
-//    NSPersistentStoreCoordinator *coordinator; ///< 添加数据库，设置数据的名字、位置、存储方式
-//    NSFetchRequest *request; ///< 数据请求
-//    NSEntityDescription *description; ///< 表格实体结构
-    
-    //1.创建模型对象
-    //获取模型路径
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Model" withExtension:@"momd"];
-    //根据模型文件创建模型对象
-    NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    
-    //2.创建持久化存储协调器:数据库
-    NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
-    //数据库名称、位置
-    NSString *docStr = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *sqlpath = [docStr stringByAppendingPathComponent:@"coreData.sqlite"];
-    NSURL *sqlURL = [NSURL fileURLWithPath:sqlpath];
-    //添加数据库
-    NSError *error = nil;
-    [coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:sqlURL options:nil error:&error];
-    
-    if (error) {
-        NSLog(@"Add Database failed! %@",error);
-    }else {
-        NSLog(@"Add Database success.");
-    }
-    
-    //3.管理对象、上下文、持久化存储模型对象、处理数据和应用的交互
-    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    //关联持久化协调器
-    context.persistentStoreCoordinator = coordinator;
-    _context = context;
-}
-
-//2.自己创建模型文件时候需要
 
 @end
 
