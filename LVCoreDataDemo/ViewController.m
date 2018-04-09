@@ -19,10 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //NOTE:Version 1.0版本数据库初始化
+    //NOTE:Version 新版本数据库初始化
     [self createSqlite];
     
-    //NOTE:Version 2.0版本数据库升级
+    //NOTE:Version 旧版本数据库升级
     //[self upgradeDatabase];
     
     [self insertToStudentTable:10];
