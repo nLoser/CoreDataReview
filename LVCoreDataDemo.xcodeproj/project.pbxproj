@@ -16,12 +16,12 @@
 		B15366A82079BC0200866FF3 /* LVCoreDataDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B15366A72079BC0200866FF3 /* LVCoreDataDemoTests.m */; };
 		B15366B32079BC0200866FF3 /* LVCoreDataDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B15366B22079BC0200866FF3 /* LVCoreDataDemoUITests.m */; };
 		B15366C52079BD1000866FF3 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B15366C32079BD1000866FF3 /* Model.xcdatamodeld */; };
-		B1F7AC6E207A2ABE00E0961A /* President+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F7AC64207A2ABE00E0961A /* President+CoreDataClass.m */; };
-		B1F7AC6F207A2ABE00E0961A /* President+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F7AC65207A2ABE00E0961A /* President+CoreDataProperties.m */; };
-		B1F7AC70207A2ABE00E0961A /* Teacher+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F7AC68207A2ABE00E0961A /* Teacher+CoreDataClass.m */; };
-		B1F7AC71207A2ABE00E0961A /* Teacher+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F7AC69207A2ABE00E0961A /* Teacher+CoreDataProperties.m */; };
-		B1F7AC72207A2ABE00E0961A /* Student+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F7AC6C207A2ABE00E0961A /* Student+CoreDataClass.m */; };
-		B1F7AC73207A2ABE00E0961A /* Student+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F7AC6D207A2ABE00E0961A /* Student+CoreDataProperties.m */; };
+		B1905D26207B19A80046D027 /* Student+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B1905D1C207B19A80046D027 /* Student+CoreDataClass.m */; };
+		B1905D27207B19A80046D027 /* Student+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B1905D1D207B19A80046D027 /* Student+CoreDataProperties.m */; };
+		B1905D28207B19A80046D027 /* Teacher+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B1905D20207B19A80046D027 /* Teacher+CoreDataClass.m */; };
+		B1905D29207B19A80046D027 /* Teacher+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B1905D21207B19A80046D027 /* Teacher+CoreDataProperties.m */; };
+		B1905D2A207B19A80046D027 /* President+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = B1905D24207B19A80046D027 /* President+CoreDataClass.m */; };
+		B1905D2B207B19A80046D027 /* President+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = B1905D25207B19A80046D027 /* President+CoreDataProperties.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,18 +60,18 @@
 		B15366B22079BC0200866FF3 /* LVCoreDataDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LVCoreDataDemoUITests.m; sourceTree = "<group>"; };
 		B15366B42079BC0200866FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B15366C42079BD1000866FF3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		B1F7AC62207A2ABE00E0961A /* President+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "President+CoreDataProperties.h"; sourceTree = "<group>"; };
-		B1F7AC63207A2ABE00E0961A /* President+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "President+CoreDataClass.h"; sourceTree = "<group>"; };
-		B1F7AC64207A2ABE00E0961A /* President+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "President+CoreDataClass.m"; sourceTree = "<group>"; };
-		B1F7AC65207A2ABE00E0961A /* President+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "President+CoreDataProperties.m"; sourceTree = "<group>"; };
-		B1F7AC66207A2ABE00E0961A /* Teacher+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teacher+CoreDataProperties.h"; sourceTree = "<group>"; };
-		B1F7AC67207A2ABE00E0961A /* Teacher+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teacher+CoreDataClass.h"; sourceTree = "<group>"; };
-		B1F7AC68207A2ABE00E0961A /* Teacher+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Teacher+CoreDataClass.m"; sourceTree = "<group>"; };
-		B1F7AC69207A2ABE00E0961A /* Teacher+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Teacher+CoreDataProperties.m"; sourceTree = "<group>"; };
-		B1F7AC6A207A2ABE00E0961A /* Student+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Student+CoreDataProperties.h"; sourceTree = "<group>"; };
-		B1F7AC6B207A2ABE00E0961A /* Student+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Student+CoreDataClass.h"; sourceTree = "<group>"; };
-		B1F7AC6C207A2ABE00E0961A /* Student+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Student+CoreDataClass.m"; sourceTree = "<group>"; };
-		B1F7AC6D207A2ABE00E0961A /* Student+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Student+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B1905D1A207B19A80046D027 /* Student+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Student+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B1905D1B207B19A80046D027 /* Student+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Student+CoreDataClass.h"; sourceTree = "<group>"; };
+		B1905D1C207B19A80046D027 /* Student+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Student+CoreDataClass.m"; sourceTree = "<group>"; };
+		B1905D1D207B19A80046D027 /* Student+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Student+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B1905D1E207B19A80046D027 /* Teacher+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teacher+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B1905D1F207B19A80046D027 /* Teacher+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Teacher+CoreDataClass.h"; sourceTree = "<group>"; };
+		B1905D20207B19A80046D027 /* Teacher+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Teacher+CoreDataClass.m"; sourceTree = "<group>"; };
+		B1905D21207B19A80046D027 /* Teacher+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Teacher+CoreDataProperties.m"; sourceTree = "<group>"; };
+		B1905D22207B19A80046D027 /* President+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "President+CoreDataProperties.h"; sourceTree = "<group>"; };
+		B1905D23207B19A80046D027 /* President+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "President+CoreDataClass.h"; sourceTree = "<group>"; };
+		B1905D24207B19A80046D027 /* President+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "President+CoreDataClass.m"; sourceTree = "<group>"; };
+		B1905D25207B19A80046D027 /* President+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "President+CoreDataProperties.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,18 +158,18 @@
 		B15366C62079C70100866FF3 /* MTManagerModel */ = {
 			isa = PBXGroup;
 			children = (
-				B1F7AC62207A2ABE00E0961A /* President+CoreDataProperties.h */,
-				B1F7AC65207A2ABE00E0961A /* President+CoreDataProperties.m */,
-				B1F7AC63207A2ABE00E0961A /* President+CoreDataClass.h */,
-				B1F7AC64207A2ABE00E0961A /* President+CoreDataClass.m */,
-				B1F7AC66207A2ABE00E0961A /* Teacher+CoreDataProperties.h */,
-				B1F7AC69207A2ABE00E0961A /* Teacher+CoreDataProperties.m */,
-				B1F7AC67207A2ABE00E0961A /* Teacher+CoreDataClass.h */,
-				B1F7AC68207A2ABE00E0961A /* Teacher+CoreDataClass.m */,
-				B1F7AC6A207A2ABE00E0961A /* Student+CoreDataProperties.h */,
-				B1F7AC6D207A2ABE00E0961A /* Student+CoreDataProperties.m */,
-				B1F7AC6B207A2ABE00E0961A /* Student+CoreDataClass.h */,
-				B1F7AC6C207A2ABE00E0961A /* Student+CoreDataClass.m */,
+				B1905D1A207B19A80046D027 /* Student+CoreDataProperties.h */,
+				B1905D1B207B19A80046D027 /* Student+CoreDataClass.h */,
+				B1905D1C207B19A80046D027 /* Student+CoreDataClass.m */,
+				B1905D1D207B19A80046D027 /* Student+CoreDataProperties.m */,
+				B1905D1E207B19A80046D027 /* Teacher+CoreDataProperties.h */,
+				B1905D1F207B19A80046D027 /* Teacher+CoreDataClass.h */,
+				B1905D20207B19A80046D027 /* Teacher+CoreDataClass.m */,
+				B1905D21207B19A80046D027 /* Teacher+CoreDataProperties.m */,
+				B1905D22207B19A80046D027 /* President+CoreDataProperties.h */,
+				B1905D23207B19A80046D027 /* President+CoreDataClass.h */,
+				B1905D24207B19A80046D027 /* President+CoreDataClass.m */,
+				B1905D25207B19A80046D027 /* President+CoreDataProperties.m */,
 			);
 			path = MTManagerModel;
 			sourceTree = "<group>";
@@ -304,15 +304,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1F7AC6E207A2ABE00E0961A /* President+CoreDataClass.m in Sources */,
-				B1F7AC73207A2ABE00E0961A /* Student+CoreDataProperties.m in Sources */,
 				B15366932079BC0100866FF3 /* ViewController.m in Sources */,
-				B1F7AC6F207A2ABE00E0961A /* President+CoreDataProperties.m in Sources */,
-				B1F7AC70207A2ABE00E0961A /* Teacher+CoreDataClass.m in Sources */,
+				B1905D27207B19A80046D027 /* Student+CoreDataProperties.m in Sources */,
+				B1905D2B207B19A80046D027 /* President+CoreDataProperties.m in Sources */,
 				B153669E2079BC0200866FF3 /* main.m in Sources */,
+				B1905D28207B19A80046D027 /* Teacher+CoreDataClass.m in Sources */,
 				B15366902079BC0100866FF3 /* AppDelegate.m in Sources */,
-				B1F7AC71207A2ABE00E0961A /* Teacher+CoreDataProperties.m in Sources */,
-				B1F7AC72207A2ABE00E0961A /* Student+CoreDataClass.m in Sources */,
+				B1905D26207B19A80046D027 /* Student+CoreDataClass.m in Sources */,
+				B1905D2A207B19A80046D027 /* President+CoreDataClass.m in Sources */,
+				B1905D29207B19A80046D027 /* Teacher+CoreDataProperties.m in Sources */,
 				B15366C52079BD1000866FF3 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

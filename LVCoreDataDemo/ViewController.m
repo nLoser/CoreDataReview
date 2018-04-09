@@ -13,8 +13,6 @@
 
 @interface ViewController ()
 @property (nonatomic, strong) NSManagedObjectContext *context;
-@property (nonatomic, strong) NSArray<NSString *> *demoArray;
-@property (nonatomic, strong) NSString *demoString;
 @end
 
 @implementation ViewController
@@ -22,13 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //NOTE:Version 1.0版本数据库初始化
-    //[self createSqlite];
+    [self createSqlite];
     
     //NOTE:Version 2.0版本数据库升级
     //[self upgradeDatabase];
-    _demoArray = @[@"dd",@"dd",@"ss",@"ew",@"ll"];
     
-    [self deleteData];
+    [self insertToStudentTable:10];
 }
 
 #pragma mark - Private - Fetch Requests
@@ -138,7 +135,7 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Student"];
     
     //谓词条件语句查询(optional)
-    NSPredicate *pre = [NSPredicate predicateWithFormat:@"sex = 'GG'"];
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"sex = %@",@"GG"];
     request.predicate = pre;
     
     //从第几页开始显示(这样不会很暴力)
@@ -202,21 +199,21 @@
 }
 
 //写入数据
-- (void)insertToStudentTable:(id)data {
-    Student *student = [NSEntityDescription insertNewObjectForEntityForName:@"Student" inManagedObjectContext:_context];
-    student.name = [NSString stringWithFormat:@"Mr-%d",arc4random()%100];
-    student.age = arc4random()%20;
-    student.sex = arc4random()%2 == 0 ? @"MM":@"GG";
-    student.height = arc4random()%180;
-    student.number = arc4random()%100;
+- (void)insertToStudentTable:(int)count {
+    for (int i = 0 ; i < 10; i ++) {
+        Student *student = [NSEntityDescription insertNewObjectForEntityForName:@"Student" inManagedObjectContext:_context];
+        student.name = [NSString stringWithFormat:@"Mr-%d",arc4random()%100];
+        student.age = arc4random()%20;
+        student.sex = arc4random()%2 == 0 ? @"MM":@"GG";
+        student.height = arc4random()%180;
+        student.number = arc4random()%100;
+    }
     
-    if (_context.hasChanges) {
-        NSError *error = nil;
-        if ([_context save:&error]) {
-            NSLog(@"Insert new Student data success.");
-        }else {
-            NSLog(@"Insert new Student datas failed! %@",error);
-        }
+    NSError *error = nil;
+    if ([_context save:&error]) {
+        NSLog(@"Insert new Student data success.");
+    }else {
+        NSLog(@"Insert new Student datas failed! %@",error);
     }
 }
 
