@@ -16,5 +16,6 @@
 }
 
 @dynamic sex;
+@dynamic student;
 
 @end

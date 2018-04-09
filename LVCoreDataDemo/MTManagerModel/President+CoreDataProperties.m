@@ -15,8 +15,9 @@
 	return [NSFetchRequest fetchRequestWithEntityName:@"President"];
 }
 
-@dynamic name;
 @dynamic age;
 @dynamic height;
+@dynamic name;
+@dynamic weight;
 
 @end

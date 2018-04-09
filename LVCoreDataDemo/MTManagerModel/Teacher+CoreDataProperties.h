@@ -17,6 +17,16 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFetchRequest<Teacher *> *)fetchRequest;
 
 @property (nullable, nonatomic, copy) NSString *sex;
+@property (nullable, nonatomic, retain) NSSet<Student *> *student;
+
+@end
+
+@interface Teacher (CoreDataGeneratedAccessors)
+
+- (void)addStudentObject:(Student *)value;
+- (void)removeStudentObject:(Student *)value;
+- (void)addStudent:(NSSet<Student *> *)values;
+- (void)removeStudent:(NSSet<Student *> *)values;
 
 @end
 

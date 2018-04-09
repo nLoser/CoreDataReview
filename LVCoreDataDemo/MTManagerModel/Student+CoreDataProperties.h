@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int16_t number;
 @property (nullable, nonatomic, copy) NSString *sex;
 @property (nonatomic) int16_t weight;
+@property (nullable, nonatomic, retain) Teacher *teacher;
 
 @end
 

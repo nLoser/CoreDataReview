@@ -17,7 +17,7 @@
     </entity>
     <entity name="Teacher" representedClassName="Teacher" syncable="YES">
         <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="teacher" inverseEntity="Student" syncable="YES"/>
+        <relationship name="student" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="teacher" inverseEntity="Student" syncable="YES"/>
         <fetchedProperty name="fetchedProperty" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="Teacher" predicateString="$FETCH_SOURCE.sex == 10"/>
         </fetchedProperty>
@@ -25,7 +25,7 @@
     <fetchRequest name="StudentFR" entity="Student" predicateString="age &gt; 10"/>
     <elements>
         <element name="President" positionX="-54" positionY="27" width="128" height="105"/>
-        <element name="Student" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="Teacher" positionX="-54" positionY="27" width="128" height="104"/>
+        <element name="Student" positionX="-369" positionY="-213" width="198" height="148"/>
+        <element name="Teacher" positionX="-74" positionY="-207" width="128" height="101"/>
     </elements>
 </model>

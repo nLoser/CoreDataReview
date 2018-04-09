@@ -16,9 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<President *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSString *name;
 @property (nonatomic) int16_t age;
 @property (nonatomic) int16_t height;
+@property (nullable, nonatomic, copy) NSString *name;
+@property (nonatomic) int16_t weight;
 
 @end
 

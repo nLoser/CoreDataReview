@@ -21,5 +21,6 @@
 @dynamic number;
 @dynamic sex;
 @dynamic weight;
+@dynamic teacher;
 
 @end

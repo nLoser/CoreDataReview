@@ -13,6 +13,8 @@
 
 @interface ViewController ()
 @property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, strong) NSArray<NSString *> *demoArray;
+@property (nonatomic, strong) NSString *demoString;
 @end
 
 @implementation ViewController
@@ -23,16 +25,10 @@
     //[self createSqlite];
     
     //NOTE:Version 2.0版本数据库升级
-    [self upgradeDatabase];
+    //[self upgradeDatabase];
+    _demoArray = @[@"dd",@"dd",@"ss",@"ew",@"ll"];
     
-    for (int i = 0; i < 10; i ++) {
-        [self insertToStudentTable:@(i)];
-    }
     [self deleteData];
-    [self updateData];
-    [self queryData];
-    [self sortData];
-    [self fetchRequest];
 }
 
 #pragma mark - Private - Fetch Requests
@@ -140,10 +136,12 @@
 - (void)queryData {
     //创建查询请求
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Student"];
+    
+    //谓词条件语句查询(optional)
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"sex = 'GG'"];
     request.predicate = pre;
     
-    //从第几页开始显示
+    //从第几页开始显示(这样不会很暴力)
     //通过这个属性实现分页
     request.fetchOffset = 0;
     request.fetchLimit = 6;
@@ -159,7 +157,7 @@
 - (void)updateData {
     //创建更新请求
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Student"];
-    NSPredicate *pre = [NSPredicate predicateWithFormat:@"sex = 'GG'"];
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"sex = %@",@"GG"];
 
     request.predicate = pre;
     
@@ -186,17 +184,20 @@
     deleRequest.predicate = pre;
     
     //返回需要删除的数据库数组
-    NSArray *deleArray = [_context executeFetchRequest:deleRequest error:nil];
+    NSArray<Student *> *deleArray = [_context executeFetchRequest:deleRequest error:nil];
     
-    for (Student *stu in deleArray) {
-        [_context deleteObject:stu];
-    }
+    __weak typeof(self) weakSelf = self;
+    [deleArray enumerateObjectsUsingBlock:^(Student * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [weakSelf.context deleteObject:obj];
+    }];
     
-    NSError *error = nil;
-    if ([_context save:&error]) {
-        NSLog(@"Delete Student data success.");
-    }else {
-        NSLog(@"Delete Student data failed! %@",error);
+    if (_context.hasChanges) {
+        NSError *error = nil;
+        if ([_context save:&error]) {
+            NSLog(@"Delete Student data success.");
+        }else {
+            NSLog(@"Delete Student data failed! %@",error);
+        }
     }
 }
 
@@ -209,11 +210,13 @@
     student.height = arc4random()%180;
     student.number = arc4random()%100;
     
-    NSError *error = nil;
-    if ([_context save:&error]) {
-        NSLog(@"Insert new Student data success.");
-    }else {
-        NSLog(@"Insert new Student datas failed! %@",error);
+    if (_context.hasChanges) {
+        NSError *error = nil;
+        if ([_context save:&error]) {
+            NSLog(@"Insert new Student data success.");
+        }else {
+            NSLog(@"Insert new Student datas failed! %@",error);
+        }
     }
 }
 

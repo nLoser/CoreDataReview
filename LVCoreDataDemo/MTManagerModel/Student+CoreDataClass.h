@@ -10,6 +10,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Teacher;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Student : NSManagedObject
