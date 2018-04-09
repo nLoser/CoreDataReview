@@ -217,4 +217,72 @@
     }
 }
 
+#pragma mark - Private - 获取查询结果Count
+/*
+ 在数据库中获取所需数据的 Count 值，不能通过内存消耗来获取，，可以通过数据库中完成，并不需要将托管对象加载到内存中，对内存的开销也是很小的。
+  */
+ //1.设置resultType
+- (NSInteger)getStudentDatasCount {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"height < %d",1];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Student"];
+    fetchRequest.predicate = predicate;
+    fetchRequest.resultType = NSCountResultType;
+    
+    NSError *error = nil;
+    NSArray *dataList = [_context executeFetchRequest:fetchRequest error:&error];
+    if (error) {
+        NSLog(@"Fetch request result error : %@", error);
+        return 0;
+    }
+    return [dataList.firstObject integerValue];
+}
+
+//2.NSManagedObjectContext的API
+- (NSInteger)getStudentDatasCount2 {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"height < %d",1];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Student"];
+    fetchRequest.predicate = predicate;
+    
+    NSError *error = nil;
+    NSInteger count = [_context countForFetchRequest:fetchRequest error:&error];
+    if (error) {
+        NSLog(@"Fetch request result error : %@", error);
+        return 0;
+    }
+    return count;
+}
+
+#pragma mark - Private - 获取在数据库内做数据处理之后的结果(位运算)
+
+- (CGFloat)getStudentSumAgeNumber {
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Student"];
+    //【强制】设置返回值为字典类型，这是为了结果可以通过设置key取出
+    fetchRequest.resultType = NSDictionaryResultType;
+    
+    //【强制】创建描述对象
+    NSExpressionDescription *expressionDes = [[NSExpressionDescription alloc] init];
+    expressionDes.name = @"sumOperation";
+    expressionDes.expressionResultType = NSFloatAttributeType;
+    
+    //【强制】创建具体描述对象，用来描述对那个属性进行什么运算（运算都是固定的，例如：sum）
+    NSExpression *expression = [NSExpression expressionForFunction:@"sum:" arguments:@[[NSExpression expressionForKeyPath:@"height"]]];
+    expressionDes.expression = expression;
+    
+    NSExpression *expression2 = [NSExpression expressionWithFormat:@"@sum.height"];
+    expressionDes.expression = expression2;
+    
+    //【强制】位运算(这个属性可以设置多个描述对象，最后通过不同的name当作key取出结果)
+    fetchRequest.propertiesToFetch = @[expressionDes];
+    
+    NSError *error = nil;
+    NSArray *resultArr = [_context executeFetchRequest:fetchRequest error:&error];
+    NSNumber *number = resultArr.firstObject[@"sumOperation"];
+    if (error) {
+        NSLog(@"Get Student sum age number error : %@", error);
+        return 0.0;
+    }else {
+        return [number floatValue];
+    }
+}
+
 @end
